@@ -20,39 +20,34 @@ const displayProducts = (products) => {
         : product.title;
     //adding dynamic div
     div.classList.add("col");
-    div.innerHTML = `<div class="card d-flex align-items-center justify-content-center text-center single-product">
-    <img src=${product.image} class="product-image mt-4" alt="" >
-    <div class="card-body">
-      <h3 ${
-        titleShort
-          ? `title="${product.title}">${titleShort}</h3>`
-          : `>${product.title}</h3>`
-      }
-      <p class="card-text">Category: ${product.category}</p>
-      <h2 class="card-title">Price: $ ${product.price}</h2>
-      <span>reviews: <strong>${
-        product.rating.count
-      }</strong> • avg. ratings: <strong>${product.rating.rate}</strong></span>
-      <div id="buttons-cart">
-      <button onclick="addToCart(${product.price})" id="addToCart-btn"
-        class="buy-now btn btn-dark">Add to Cart</button>
-      <button id="details-btn" class="btn btn-warning text-white">Details</button>
+    div.innerHTML = `
+    <div class="card d-flex align-items-center justify-content-center text-center single-product">
+      <img src=${product.image} class="product-image mt-4" alt="">
+      <div class="card-body">
+        <h3 title="${product.title}">${titleShort}</h3>
+        <p class="card-text">Category: ${product.category}</p>
+        <h2 class="card-title">Price: $ ${product.price}</h2>
+        <span>avg.ratings: <strong>${product.rating.rate}</strong>  reviews: <strong>${product.rating.count}</strong></span>
+        <div class="d-flex justify-content-center mt-4">
+          <button onclick="addToCart(${product.price})" id="addToCart-btn"
+        class="buy-now btn btn-dark mx-1">Add to Cart</button>
+          <button id="details-btn" class="btn btn-warning text-white mx-1">Details</button>
+        </div>
       </div>
-    </div>
-</div>`;
+    </div>`;
     //appending dynamic div
     document.getElementById("all-products").appendChild(div);
   });
 };
 
-//updating
+//updating tax an charge
 let count = 0;
 const addToCart = (price) => {
   count += 1;
   updatePrice("price", price);
 
   updateTaxAndCharge();
-  document.getElementById("total-Products").innerText = count;
+  document.getElementById("total-products").innerText = count;
   updateTotal();
 };
 
@@ -71,7 +66,7 @@ const updatePrice = (id, value) => {
 };
 
 // set innerText function
-const setInnerText = (id, value) => {
+const setCartInnerText = (id, value) => {
   document.getElementById(id).innerText = value.toFixed(2);
 };
 
@@ -79,16 +74,16 @@ const setInnerText = (id, value) => {
 const updateTaxAndCharge = () => {
   const priceConverted = getInputValue("price");
   if (priceConverted > 200) {
-    setInnerText("delivery-charge", 30);
-    setInnerText("total-tax", priceConverted * 0.2);
+    setCartInnerText("delivery-charge", 30);
+    setCartInnerText("total-tax", priceConverted * 0.2);
   }
   if (priceConverted > 400) {
-    setInnerText("delivery-charge", 50);
-    setInnerText("total-tax", priceConverted * 0.3);
+    setCartInnerText("delivery-charge", 50);
+    setCartInnerText("total-tax", priceConverted * 0.3);
   }
   if (priceConverted > 500) {
-    setInnerText("delivery-charge", 60);
-    setInnerText("total-tax", priceConverted * 0.4);
+    setCartInnerText("delivery-charge", 60);
+    setCartInnerText("total-tax", priceConverted * 0.4);
   }
 };
 
