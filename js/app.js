@@ -30,7 +30,7 @@ const displayProducts = (products) => {
       }
       <p class="card-text">Category: ${product.category}</p>
       <h2 class="card-title">Price: $ ${product.price}</h2>
-      <span>Reviews: <strong>${
+      <span>reviews: <strong>${
         product.rating.count
       }</strong> • avg. ratings: <strong>${product.rating.rate}</strong></span>
       <div id="buttons-cart">
