@@ -7,7 +7,7 @@ body {
 /* product card section */
 .single-product {
   background-color: rgba(223, 223, 226, 0.24);
-  height: 460px;
+  height: 450px;
   padding: 10px;
   transition: 0.6s;
 }
@@ -15,10 +15,12 @@ body {
   box-shadow: 0 0.1rem 1.2rem rgba(0, 0, 0, 0.125);
   border-radius: 10px;
 }
-.product-image {
+
+.product-image img {
   width: 150px;
   height: 150px;
 }
+
 /* cart section */
 .cart-main {
   background-color: rgba(223, 223, 226, 0.24);
