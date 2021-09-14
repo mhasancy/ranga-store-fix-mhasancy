@@ -13,7 +13,6 @@ const displayProducts = (products) => {
   // accessing products
   products.forEach((product) => {
     const div = document.createElement("div");
-
     // shortenedProduct title
     const titleBr = ` 
       <h3 class="fs-4 fw-bold" title="${product.title}">
@@ -57,19 +56,17 @@ let count = 0;
 const addToCart = (price) => {
   count += 1;
   updatePrice("price", price);
-
   updateTaxAndCharge();
   document.getElementById("total-products").innerText = count;
   updateTotal();
 };
-
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
   return converted;
 };
 
-// main price update function
+// ui price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
