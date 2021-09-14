@@ -13,11 +13,21 @@ const displayProducts = (products) => {
   // accessing products
   products.forEach((product) => {
     const div = document.createElement("div");
-    // shortenedProduct title with ternary
-    const titleShort =
-      product.title.length > 22
-        ? `${product.title.slice(0, 22)} ...`
-        : product.title;
+
+    // shortenedProduct title
+    const titleBr = ` 
+      <h3 class="fs-4 fw-bold" title="${product.title}">
+        ${product.title} <br><br>
+      </h3>
+    `;
+    const titleNoBr = ` 
+        <h3 class="fs-4 fw-bold" title="${product.title}">${product.title.slice(
+      0,
+      28
+    )} ...
+        </h3>
+      `;
+    const titleDisplay = product.title.length > 25 ? titleNoBr : titleBr;
     //adding dynamic div
     div.classList.add("col");
     div.innerHTML = `
@@ -26,9 +36,9 @@ const displayProducts = (products) => {
         <img src=${product.image} alt="">
       </div>
       <div class="card-body">
-        <h3 title="${product.title}">${titleShort}</h3>
+        ${titleDisplay}
         <p class="card-text mb-2">Category: ${product.category}</p>
-        <h2 class="card-title">Price: $ ${product.price}</h2>
+        <h2 class="card-title fs-4 fw-bold ">Price: $ ${product.price}</h2>
         <span>Average Ratings: <strong>${product.rating.rate}</strong> <br/>Total Reviews: <strong>${product.rating.count}</strong></span>
         <div class="d-flex justify-content-center my-2">
           <button onclick="addToCart(${product.price})" id="addToCart-btn"
