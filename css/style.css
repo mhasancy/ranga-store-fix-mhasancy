@@ -19,6 +19,7 @@ body {
 .product-image img {
   width: 150px;
   height: 150px;
+  mix-blend-mode: multiply;
 }
 
 /* cart section */
